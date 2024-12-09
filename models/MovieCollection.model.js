@@ -1,6 +1,6 @@
 var mongoose = require("mongoose")
 var movieSchema = mongoose.Schema({
-    movieimage:String,
+    movieImage:String,
     movieTitle:String,
     price:String,
     movieDuration:String,
