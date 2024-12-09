@@ -7,7 +7,7 @@ var bodyParser = require('body-parser')
 app.use(bodyParser.json())
 
 var model = require('./models/EventCollection.model')
-var Movies = require('./models/MovieCollection.model')
+var Moviess = require('./models/MovieCollection.model')
 var mongoose = require('mongoose')
 mongoose.connect("mongodb+srv://Ayyappa:ayyappa666@cluster0.m2y7b.mongodb.net/EventCollection?retryWrites=true&w=majority&appName=Cluster0")
 .then((data)=>{console.log("Connected")})
@@ -33,6 +33,15 @@ app.get('/events/:id',(req,res)=>{
 app.post('/addevents',(req,res)=>{
     var newmodel = new model(req.body);
     newmodel.save().then((data)=>{console.log(data)})
+    .catch((err)=>{console.log(err)})
+})
+
+app.get('/movies',(req,res)=>{
+    Moviess.find()
+    .then((data)=>{
+        res.json(data)
+        console.log(data)
+    })
     .catch((err)=>{console.log(err)})
 })
 
