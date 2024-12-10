@@ -7,7 +7,7 @@ var movieSchema = mongoose.Schema({
     movieType:String,
     movieCensor:String,
     releaseDate:String,
-    language:String,
+    language:Array,
     aboutUs:String,
     movieFormats:Array,
 })

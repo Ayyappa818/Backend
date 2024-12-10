@@ -55,6 +55,12 @@ app.get('/movies/:id',(req,res)=>{
     .catch((err)=>{console.log(err)})
 })
 
+app.post('/addmovies',(req,res)=>{
+    var newMovies = new Movies(req.body);
+    newMovies.save().then((data)=>{console.log(data)})
+    .catch((err)=>{console.log(err)})
+})
+
 app.listen(6500,()=>{
     console.log("server is running on port 6500")
 })
