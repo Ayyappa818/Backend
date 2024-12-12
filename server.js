@@ -61,6 +61,6 @@ app.post('/addmovies',(req,res)=>{
     .catch((err)=>{console.log(err)})
 })
 
-app.listen(6600,()=>{
-    console.log("server is running on port 6600")
+app.listen(6400,()=>{
+    console.log("server is running on port 6400")
 })
