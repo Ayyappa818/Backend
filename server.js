@@ -45,7 +45,7 @@ app.post('/efilter',async(req,res)=>{
 
 app.get('/efilter/:id',(req,res)=>{
     console.log(req.params.title)
-    model.find({title:req.params.title})
+    model.find({_id:req.params.id})
     .then((data)=>{
         console.log(data)
         res.json(data)
@@ -86,7 +86,7 @@ app.post('/mfilter',async(req,res)=>{
 app.get('/mfilter/:id',async(req,res)=>{
     console.log(req.params.title)
     try{
-        const data = await Movies.find({movieTitle:req.params.title})
+        const data = await Movies.find({_id:req.params.id})
         console.log("responsedata::"+data)
         res.json(data)
     }
