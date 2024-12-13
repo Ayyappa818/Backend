@@ -14,26 +14,26 @@ mongoose.connect("mongodb+srv://Ayyappa:ayyappa666@cluster0.m2y7b.mongodb.net/Ev
 .then((data)=>{console.log("Connected")})
 .catch((err)=>{console.log("Not Connected")})
 
-app.get('/events',(req,res)=>{
-    model.find()
+app.get('/events',async(req,res)=>{
+    await model.find()
     .then((data)=>{
         res.json(data)
         console.log(data)
     }).catch((err)=>{console.log(err)})
 })
 
-app.get('/events/:id',(req,res)=>{
+app.get('/events/:id',async(req,res)=>{
     console.log(req.params.id)
-    model.findById(req.params.id)
+    await model.findById(req.params.id)
     .then((data)=>{
         res.json(data)
         console.log(data)
     }).catch((err)=>{console.log(err)})
 })
 
-app.post('/addevents',(req,res)=>{
+app.post('/addevents',async(req,res)=>{
     var newmodel = new model(req.body);
-    newmodel.save().then((data)=>{console.log(data)})
+    await newmodel.save().then((data)=>{console.log(data)})
     .catch((err)=>{console.log(err)})
 })
 
@@ -43,17 +43,17 @@ app.post('/efilter',async(req,res)=>{
         res.json(data)
 })
 
-app.get('/efilter/:id',(req,res)=>{
+app.get('/efilter/:id',async(req,res)=>{
     console.log(req.params.title)
-    model.find({_id:req.params.id})
+    await model.find({_id:req.params.id})
     .then((data)=>{
         console.log(data)
         res.json(data)
     })
 })
 
-app.get('/movies',(req,res)=>{
-    Movies.find()
+app.get('/movies',async(req,res)=>{
+    await Movies.find()
     .then((data)=>{
         res.json(data)
         console.log(data)
@@ -61,9 +61,9 @@ app.get('/movies',(req,res)=>{
     .catch((err)=>{console.log(err)})
 })
 
-app.get('/movies/:id',(req,res)=>{
+app.get('/movies/:id',async(req,res)=>{
     console.log(req.params.id)
-    Movies.findById(req.params.id)
+    await Movies.findById(req.params.id)
     .then((data)=>{
         res.json(data)
         console.log(data)
@@ -71,9 +71,9 @@ app.get('/movies/:id',(req,res)=>{
     .catch((err)=>{console.log(err)})
 })
 
-app.post('/addmovies',(req,res)=>{
+app.post('/addmovies',async(req,res)=>{
     var newMovies = new Movies(req.body);
-    newMovies.save().then((data)=>{console.log(data)})
+    await newMovies.save().then((data)=>{console.log(data)})
     .catch((err)=>{console.log(err)})
 })
 
