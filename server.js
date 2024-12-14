@@ -95,6 +95,14 @@ app.get('/mfilter/:id',async(req,res)=>{
     }
 })
 
+app.delete('/mdelete/:id',(req,res)=>{
+    Movies.findByIdAndDelete({_id:req.params.id})
+    .then((data)=>{
+        res.json(data)
+    })
+    .catch((err)=>{console.log(err)})
+})
+
 app.listen(6400,()=>{
     console.log("server is running on port 6400")
 })
